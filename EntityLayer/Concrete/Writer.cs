@@ -14,10 +14,12 @@ namespace EntityLayer.Concrete
 		public string WriterImage { get; set; }
 		public string WriterMail { get; set; }
 		public string WriterPassword { get; set; }
+		public string WriterConfirmPassword { get; set; }
+
 		public bool WriteStatus { get; set; }
 
 
-
+		public List<Blog> Blogs { get; set; }
 
 
 	}

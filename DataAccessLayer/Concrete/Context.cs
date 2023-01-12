@@ -22,7 +22,7 @@ namespace DataAccessLayer.Concrete
 		public DbSet<Contact> Contact { get; set; }
 		public DbSet<Writer> Writers { get; set; }
 
-
+		public DbSet<NewsLetter> NewsLetters { get; set; }
 
 
 

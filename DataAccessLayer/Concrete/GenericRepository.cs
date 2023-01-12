@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,14 +28,21 @@ namespace DataAccessLayer.Concrete
             return db.Set<T>().Find(id);
         }
 
-        public List<T> GetListAll()
+		public List<T> GetListAll()
         {
             using var db = new Context();
 
             return db.Set<T>().ToList();
         }
 
-        public void Insert(T t)
+		public List<T> GetListAll(Expression<Func<T, bool>> filter)
+		{
+			using var db = new Context();
+
+			return db.Set<T>().Where(filter).ToList();
+		}
+
+		public void Insert(T t)
         {
             using var db = new Context();
             db.Add(t);

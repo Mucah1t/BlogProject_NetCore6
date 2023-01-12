@@ -2,17 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface IBlogService
+    public interface IBlogService:IGenericService<Blog>
     {
-        List<Blog> GetBlogListAll();
-        void BlogInsert(Blog blog);
-        void BlogDelete(Blog blog);
-        void BlogUpdate(Blog blog);
-        Blog GetBlogById(int id);
-    }
+
+		List<Blog> GetListWithCategory();
+		List<Blog> GetListWithWriter(int id);
+
+	}
 }

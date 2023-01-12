@@ -9,5 +9,8 @@ namespace DataAccessLayer.Abstract
 {
     public interface IBlogDal:IGenericDal<Blog> //It will be inheritad from Generic repository to access all methods
     {
+        List<Blog> GetListWithCategory();
+        List<Blog> GetListWithCategoryByWriter(int id);
+
     }
 }

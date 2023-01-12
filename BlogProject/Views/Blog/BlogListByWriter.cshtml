@@ -1,0 +1,40 @@
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+@{
+    ViewData["Title"] = "BlogListByWriter";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h1>Author's Blog</h1>
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Blog Title</th>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Status</th>
+        <th>Remove</th>
+        <th>Edit</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.BlogID</th>
+            <td>@item.BlogTitle</td>
+            <td> @(((DateTime)item.BlogCreateDate).ToString("dd/MMM/yyyy"))</td>
+            <td>@item.Category.CategoryName</td>
+            <td>  @if (item.BlogStatus==true)
+                {
+                    <span class="badge badge-success">Active</span>
+                }
+                else
+                {
+                    <span class="badge badge-secondary">Passive</span>
+                }
+            </td>
+            <td><a href="/Blog/DeleteBlog/@item.BlogID" class="btn btn-outline-danger"><i class="mdi mdi-delete"></i> Remove</a></td>
+            <td><a href="/Blog/EditBlog/@item.BlogID" class="btn btn-outline-facebook"><i class="mdi mdi-pencil"></i> Edit</a></td>
+        </tr>
+    }
+</table>
+<a href="/Blog/AddBlog" class="btn btn-outline-primary"><i class="mdi mdi-plus"></i>Create</a>

@@ -1,0 +1,25 @@
+﻿@using EntityLayer.Concrete
+@model List<Category>
+@{
+    Layout = null;
+}
+
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Category Name</th>
+        <th>Status </th>
+        <th>Details </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryID </td>
+            <td>@item.CategoryName </td>
+            <td>@item.CategoryStatus </td>
+            <td>@item.CategoryDescription </td>
+            <td><a href="#" class="btn btn-outline-warning">Remove</a></td>
+        </tr>
+        
+    }
+</table>

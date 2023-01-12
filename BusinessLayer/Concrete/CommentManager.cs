@@ -13,7 +13,12 @@ namespace BusinessLayer.Concrete
     {
         ICommentDal _commentDal;
 
-        public void CommentDelete(Comment comment)
+		public CommentManager(ICommentDal commentDal)
+		{
+			_commentDal = commentDal;
+		}
+
+		public void CommentDelete(Comment comment)
         {
             _commentDal.Delete(comment);
         }
@@ -35,7 +40,11 @@ namespace BusinessLayer.Concrete
 
         public List<Comment> GetCommentListAll()
         {
-            return _commentDal.GetListAll();
+            return _commentDal.GetListAll(x=>x.BlogID== 1);
         }
-    }
+		public List<Comment> GetCommentByIDx(int id)
+		{
+			return _commentDal.GetListAll(x => x.BlogID == id);
+		}
+	}
 }
