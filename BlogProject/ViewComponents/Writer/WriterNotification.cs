@@ -1,12 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete.EntityFramework;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BlogProjectUI.ViewComponents.Writer
 {
     public class WriterNotification : ViewComponent
     {
+        NotificationManager nm = new NotificationManager(new EfNotification());
+
         public IViewComponentResult Invoke()
         {
-            return View();
+            var values = nm.GetList();
+            return View(values);
         }
     }
 }
