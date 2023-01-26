@@ -1,0 +1,16 @@
+﻿@model BlogProjectUI.Controllers.EmployeeTestController.Class1
+@{
+    ViewData["Title"] = "EditEmployee";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Edit Employee</h1>
+<form method="post">
+    <label>Id</label>
+    @Html.TextBoxFor(x=>x.Id, new {@class = "form-control"})
+    <br />
+    <label>Employee</label>
+    @Html.TextBoxFor(x=>x.Name, new {@class = "form-control"})
+    <br />
+    <button class="btn btn-outline-info">Save</button>
+</form>

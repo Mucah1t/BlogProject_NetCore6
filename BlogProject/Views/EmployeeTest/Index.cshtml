@@ -1,0 +1,27 @@
+﻿@using static BlogProjectUI.Controllers.EmployeeTestController
+@model List<Class1>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Name&Surname</th>
+        <th>Remove</th>
+        <th>Edit</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td><a href="/EmployeeTest/DeleteEmployee/@item.Id" class="btn btn-outline-danger">Remove</a></td>
+            <td><a href="/EmployeeTest/EditEmployee/@item.Id" class="btn btn-outline-primary">Edit</a></td>
+        </tr>
+    }
+</table>
+<a href="/EmployeeTest/AddEmployee/" class="btn btn-outline-success">Save New Employee</a>
