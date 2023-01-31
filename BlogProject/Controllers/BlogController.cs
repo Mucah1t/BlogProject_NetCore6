@@ -18,11 +18,13 @@ namespace BlogProjectUI.Controllers
         CategoryManager cm = new CategoryManager(new EfCategory());
         Context c = new Context();
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var vList = bm.GetListWithCategory();
             return View(vList);
         }
+        [AllowAnonymous]
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.i = id;

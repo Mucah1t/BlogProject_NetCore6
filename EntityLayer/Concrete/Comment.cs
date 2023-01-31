@@ -13,7 +13,7 @@ namespace EntityLayer.Concrete
 		public string CommenTitle { get; set; }
 		public string CommenContent { get; set; }
 		public DateTime CommentDate { get; set; }
-		public bool CommentStatus { get; set; }
+		public bool? CommentStatus { get; set; }
         public int BlogScore { get; set; }
 
 
