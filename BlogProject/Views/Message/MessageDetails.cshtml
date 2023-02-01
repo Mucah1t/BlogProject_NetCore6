@@ -5,7 +5,7 @@
 }
 
 
-@Html.HiddenFor(x=>x.MessageID)
+@Html.HiddenFor(x=>x.ReceiverID)
 
 @Html.Label("Message Title")
 @Html.TextBoxFor(x=>x.Subject, new {@class="form-control"})
@@ -13,4 +13,4 @@
 @Html.Label("Message Content")
 @Html.TextAreaFor(x=>x.MessageDetails,10,3, new {@class="form-control"})
 <br />
-<button class="btn btn-outline-success">Go back to Messages </button>
+<a href="/Message/InBox" class="btn btn-outline-success">Go back to Messages </a>

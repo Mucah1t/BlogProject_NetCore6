@@ -33,8 +33,10 @@ namespace BlogProjectUI.Controllers
         }
         public IActionResult BlogListByWriter()
         {
-            var userMail = User.Identity.Name;
-            var writerId = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
+            var username = User.Identity.Name;
+            var usermail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
+            var writerId = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
+       
 
             var values = bm.GetListWithCategoryByWriterBM(writerId);
             return View(values);
@@ -57,9 +59,10 @@ namespace BlogProjectUI.Controllers
         [HttpPost]
         public IActionResult AddBlog(Blog blog)
         {
+            var username = User.Identity.Name;
+            var usermail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
+            var writerId = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
 
-            var userMail = User.Identity.Name;
-            var writerId = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
 
             BlogValidator bv = new BlogValidator();
             ValidationResult results = bv.Validate(blog);
@@ -105,8 +108,9 @@ namespace BlogProjectUI.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog blog)
         {
-            var userMail = User.Identity.Name;
-            var writerId = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterID).FirstOrDefault();
+            var username = User.Identity.Name;
+            var usermail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
+            var writerId = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
 
             var value = bm.GetBlogById(blog.BlogID);
             blog.WriterID = writerId;

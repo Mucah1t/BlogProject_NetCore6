@@ -65,7 +65,18 @@ namespace BlogProjectUI.Controllers
             var id=c.Users.Where(x=>x.Email==userMail).Select(y=>y.Id).FirstOrDefault();
             var values = userManager.GetById(id);
             return View(values);
+
+            //var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            //UserUpdateViewModel model = new UserUpdateViewModel();
+            //model.mail = values.Email;
+            //model.namesurname = values.NameSurname;
+            //model.imageurl = values.ImageUrl;
+            //model.username = values.UserName;
+            //return View(model);
         }
+
+         
+
         [AllowAnonymous]
         [HttpPost]
         public IActionResult WriterEditProfile(Writer p)
@@ -86,6 +97,13 @@ namespace BlogProjectUI.Controllers
                 }
             }
             return View();
+            //var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            //values.NameSurname = model.namesurname;
+            //values.ImageUrl = model.imageurl;
+            //values.Email = model.mail;
+            //values.PasswordHash = _userManager.PasswordHasher.HashPassword(values, model.password);/* Password Update*/
+            //var result = await _userManager.UpdateAsync(values);
+            //return RedirectToAction("Index", "Dashboard");
         }
         [AllowAnonymous]
         [HttpGet]
