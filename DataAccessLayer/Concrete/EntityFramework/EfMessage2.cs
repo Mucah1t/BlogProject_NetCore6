@@ -26,7 +26,7 @@ namespace DataAccessLayer.Concrete.EntityFramework
         {
             using (var db = new Context())
             {
-                return db.Message2s.Include(x => x.ReceiverID).Where(x => x.SenderID == id).ToList();
+                return db.Message2s.Include(x => x.ReceiverUser).Where(x => x.SenderID == id).ToList();
             }
         }
     }

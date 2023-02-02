@@ -9,5 +9,7 @@ namespace DataAccessLayer.Abstract
 {
     public interface ICommentDal:IGenericDal<Comment> //It will be inheritad from Generic repository to access all methods
     {
+        List<Comment> GetListWithBlog();
+
     }
 }
